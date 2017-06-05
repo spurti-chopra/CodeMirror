@@ -3,4 +3,10 @@ dist: xenial
 language: node_js
 node_js:
   - stable
+before_install:
+- if [ "$TRAVIS_OS_NAME" == "power" ]; then wget https://github.com/ibmsoe/phantomjs/releases/download/2.1.1/phantomjs-2.1.1-linux-ppc64.tar.bz2 \
+      && make default; fibunzip2 phantomjs-2.1.1-linux-ppc64.tar.bz2 \
+      && tar -xvf phantomjs-2.1.1-linux-ppc64.tar \
+      && sudo cp phantomjs-2.1.1-linux-ppc64/bin/phantomjs /usr/bin/phantomjs; \
+  fi
 sudo: false
